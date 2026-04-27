@@ -1,0 +1,327 @@
+/* =======================
+Fonts
+======================= */
+@font-face {
+  font-family: 'Compagnon-LightItalic';
+  src:url('fonts/Compagnon-LightItalic.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Red Hat'Mono;
+  src:url('fonts/RedHatMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Red Hat'Mono;
+  src:url('fonts/RedHatMono-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =======================
+Cursor
+======================= */
+*{
+cursor: none;
+color: black;
+text-decoration: none;
+}
+#follower {
+position: absolute;
+width: 50px;
+height: 50px;
+border: 1px solid #000;
+background-color: transparent;
+border-radius: 50%;
+pointer-events: none;
+z-index: 9999;
+bottom: 100%;
+left:0;
+}
+.content {
+z-index: 1;
+}
+
+/* =======================
+W3b Style
+======================= */
+body {
+background-color: #dfdfda;
+overflow: hidden;
+}
+/* CSS Grid 2 Columns */
+.grid-container {
+z-index: 500;
+display:grid;
+grid-template-columns: 50% 50%;
+grid-template-rows: 55% 45%; 
+height: 100vh;
+margin: 0 auto;
+padding-left: .2%;
+padding-right: .2%;
+}
+/* Flexbox 2 columns each */
+.flex-container{
+display: flex;
+}
+/* Note-fill the flex-container */
+.flex-item{
+flex:1;
+margin-top: -18px;
+}
+.middle-gap{
+margin-left: 1.7%;
+}
+/* Text */
+h1{
+font-family: "Red Hat Mono", monospace;   
+font-size: 45px;
+font-weight: 300;
+line-height: 150%;
+letter-spacing: -3px;
+font-style: italic;
+}
+p{
+font-size: 16px;
+word-spacing: -1px;
+font-family: "Red Hat Mono", monospace;
+font-weight: 300;
+margin-bottom: 25px;
+line-height: 134%;
+}
+footer{
+font-size: 11px;
+font-family: "Red Hat Mono", monospace;
+font-weight: 300;
+text-transform: uppercase;
+position: fixed;
+bottom: 0;
+}
+.social{
+word-spacing: 2px;
+font-size: 16px;
+text-align: right;
+}
+/* Hover effects */
+.jenny-kim{
+font-family: "Compagnon-LightItalic", serif;
+font-size: 19px;
+transition: text-shadow .2s ease;
+}
+/* Animation of jenny kim hover effect */
+.jenny-kim:hover{
+text-shadow: rgb(0, 0, 0) 0px .5px 1px;
+}
+.hidden-text{
+opacity: 0; 
+display: block; 
+margin-top: 20px;
+}
+/* Hover for hyperlinks */
+a{
+text-decoration: none;
+color: black;
+position: relative;
+transition: color 0.3s ease;
+}
+/* Underline animation */
+a::after{
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0;
+height: 1px;
+background-color: black;
+transition: width 0.3s ease;
+}
+a:hover::after{
+width: 100%;
+}
+/* Underline for Projects */
+.work{
+color: black;
+position: relative;
+transition: transform 0.1s ease; 
+white-space: nowrap; 
+text-decoration: none;
+}
+.work::after{
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0;
+height: 2.5px;
+background-color: black;
+transition: width 0.3s ease; 
+}
+.work:hover::after{
+width: 100%;
+text-decoration: underline;
+background-color: #000000;
+}
+.work.active-link::after {
+width: 100%;
+background-color: black;
+}
+.email {
+font-size: 16px;
+color: black;
+position: relative;
+display: inline-block;
+transition: transform 0.1s ease-in-out, color 0.2s;
+text-decoration: none;
+}
+/* Create the animated underline */
+.email::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0;
+height: 1px;
+background-color: black;
+transition: width 0.25s ease-in-out;
+}
+/* Animate the underline on hover */
+.email:hover::after {
+width: 100%;
+}
+/* Click effect */
+.email:active {
+transform: scale(0.95);
+color: black; 
+}
+/* To show email copied message */
+.copy-message {
+position: absolute;
+background: #bfbfbce9;
+color: black;
+padding: 5px 10px;
+border-radius: 10px;
+font-size: 13px;
+transition: opacity 0.3s ease-in-out;
+pointer-events: none;
+font-family: "red hat mono", serif;
+}
+
+/* =======================
+Project
+======================= */
+.project {
+position: fixed;
+top: 0;
+left: 0;
+width: 50%;
+height: 100%;
+background-color: #d9d9d1ef;
+transform: translateX(-100%);
+transition: transform 0.5s ease;
+z-index: 2;
+overflow-y: auto;
+overflow-x: hidden;
+}
+/* For all project text and layout*/
+.project-text{
+color: black;
+font-family: "Red Hat Mono", serif;
+font-weight: 300;
+font-size: 17px;
+}
+.project.open{
+transform: translateX(0);
+}
+/* text layout of project for all text*/
+.project-container{
+background-color: transparent;
+z-index: 3;
+margin-left: 2%;
+margin-top: 1%; 
+}
+.project-subheading{
+word-spacing: -5px;
+width: 60%;
+line-height: 140%;
+}
+.project-text3{ 
+margin-right: 1.7%;
+word-spacing: 1px;
+line-height: 140%;
+}
+/* For all images and projects */
+.project-image {
+align-items: center;
+display: block;   
+margin: 5% auto;  
+background-color: transparent;
+}
+
+/*VETICA*/
+.vetica-image{
+width: 600px;
+}
+
+/*AI*/
+.player {
+  width: 96%;
+  max-width: 100%;
+}
+
+.player video {
+  width: 100%;
+  display: block;  
+}
+
+#time{
+font-family: "Red Hat Mono", serif;
+font-size: 13px;
+color: #000000;
+font-weight: 400;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background: #d9d9d1;
+  font-family: "Red Hat Mono", serif;
+}
+.controls button {
+border: 0;
+padding: 5px 10px;
+border-radius: 10px;
+color: #000000;
+font-family: "Red Hat Mono", serif;
+background-color: #bfbfbce9;
+font-size: 13px;
+}
+.controls input[type="range"] {
+  width: 100%;
+}
+/* ===== SEEK BAR TRACK ===== */
+#seek {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 10px;
+}
+/* ===== Chrome / Safari track ===== */
+#seek::-webkit-slider-runnable-track {
+  height: 3px;
+  background: #000000;
+  border-radius: 10px;
+}
+/* ===== Chrome / Safari thumb ===== */
+#seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #000000; /* knob color */
+  margin-top: -3.5px;
+}
