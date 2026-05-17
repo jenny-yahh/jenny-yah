@@ -38,60 +38,65 @@ Thank you for taking the time to explore this part of my portfolio!-->
 
 <body>
 <div id="content">
-        <!-- css grid of two columns and 4 flexbox within! -->
-        <div class ="grid-container">
-            <div class = "grid-item flex-container"> 
-                <!-- Gridbox 1 -->
-                <div class ="flex-item"> 
-                    <p> <span class="hover-jenny jenny-kim"> Jenny Kim </span>is a multidisciplinary designer 
-                    and curator based in<br> New York.</p>
-                    <div class="hidden-text">
-                        <p> She holds a BFA in Communications Design with a focus on Graphic Design from <em>Pratt Institute.</em></p>
-                        <p> Her practice is focused on 3D visuals, branding, identity systems, motion, typography, and web projects.</p>
-                        <p> In her spare time, she likes to experiment with woodworking, textiles, and analog technology. </p>
-                    </div>
+    <div class ="grid-container">
+        <!--Row 1 -->
+        <div class = "grid-item flex-container"> <!--column one -->
+            <!-- Gridbox 1 -->
+            <div class ="flex-item jenny-phone"> 
+                <p class="hover-jenny"> <span class="jenny-kim"> Jenny Kim </span>is a multidisciplinary designer 
+                and curator based in New York.</p>
+                <div class="hidden-text">
+                <p> She holds a BFA in Communications Design with a focus on Graphic Design from <em>Pratt Institute.</em></p>
+                <p> Her practice is focused on 3D visuals, branding, identity systems, motion, typography, and web projects.</p>
+                <p> In her spare time, she likes to experiment with woodworking, textiles, and analog technology. </p>
                 </div>
-                <!-- Gridbox 2 -->
-                <div class ="flex-item"></div>
             </div>
 
-            <div class = "grid-item flex-container">
+            <!-- Gridbox 2 (empty)-->
+            <div class ="flex-item"></div>
+        </div>
 
-                <!-- Gridbox 3 -->
-                <div class ="flex-item additional middle-gap">
-                    <p>Additional work & CV upon request<br>
+        <div class = "grid-item flex-container"> <!--column two -->
+            <!-- Gridbox 3 -->
+                <div class ="flex-item additional middle-gap email-phone">
+                    <p>Additional work & CV upon request
                     <span class="copy-word email" onclick="copyText(this, event)">hey.jenny.yah@gmail.com</span></p>
                 </div>
 
-                <!-- Gridbox 4 -->
+            <!-- Gridbox 4 -->
                 <div class ="flex-item social">
                     <p><a href="https://www.instagram.com/jenny_yah/" target="_blank" >Instagram,</a>
                     <a href="https://www.linkedin.com/in/jenny-yah/" target="_blank">LinkedIn,</a>
                     <a href="https://www.are.na/jenny-kim-apb1nyjwd00/channels" target="_blank">Are.na</a></p>
                 </div>
+        </div>
     
-            </div>   
+        <!--Row 2 -->
+        <div class ="grid-item"></div>
+        <div class ="grid-item middle-gap project-phone">
+                <p>Selected Works</p>
+                <h1>
+                    <span class="link work"onclick="toggleProject(1)">Vetica</span>,
+                    <span class="link work"onclick="toggleProject(2)">愛</span>,
+                    <span class="link work"onclick="toggleProject(3)">Dime</span>,
+                    <span class="link work"onclick="toggleProject(4)">Four Eyes</span>,
+                    <span class="link work"onclick="toggleProject(5)">Hom Mali</span>,
+                    <span class="link work"onclick="toggleProject(6)">Mutuals</span>, 
+                    <span class="link work"onclick="toggleProject(7)">Melted Potato</span>,
+                    <span class="link work"onclick="toggleProject(8)">etc.</span>
+                </h1>
+        </div>
+    </div>
 
-    <!-- Rows below-->
-    <div class ="grid-item">
-        <footer>ALL RIGHTS RESERVED. © 2025, JENNIFER KIM. Last updated 10/23/2025</footer>
-    </div>
-    <div class ="grid-item middle-gap">
-        <p>Selected Works</p>
-        <h1>
-            <span class="link work"onclick="toggleProject(1)">Vetica</span>,
-            <span class="link work"onclick="toggleProject(2)">愛</span>,
-            <span class="link work"onclick="toggleProject(3)">Dime</span>,
-            <span class="link work"onclick="toggleProject(4)">Four Eyes</span>,
-            <span class="link work"onclick="toggleProject(5)">Hom Mali</span>,
-            <span class="link work"onclick="toggleProject(6)">Mutuals</span>, 
-            <span class="link work"onclick="toggleProject(7)">Melted Potato</span>,
-            <span class="link work"onclick="toggleProject(8)">etc.</span>
-        </h1>
-        <footer>TYPESET IN RED HAT MONO BY MCKL & Compagnon by Juliette Duhé, <br> Léa Pradine, Valentin Papon, Chloé Lozano, Sébastien Riollier. Distributed by velvetyne.fr.</footer>
-    </div>
-</div>
-</div>
+<footer class="bottom-footer">
+    <span class="footer-left">
+        ALL RIGHTS RESERVED. © 2025, JENNIFER KIM. Last updated 10/23/2025
+    </span>
+
+    <span class="footer-right">
+        TYPESET IN RED HAT MONO BY MCKL & Compagnon by Juliette Duhé, Léa Pradine, Valentin Papon, Chloé Lozano, Sébastien Riollier. Distributed by velvetyne.fr.
+    </span>
+</footer>
 
  <!-- More info of individual projects -->
 <div class="project project-text" id="project1">
@@ -100,7 +105,9 @@ Thank you for taking the time to explore this part of my portfolio!-->
             <div class="project-subheading">Poster, Book<br>Photography, Print, Typography</div>     
         </div>
     </div>
-    <img src="projects/vetica.gif" alt="Printed book of Vetica" class="vetica-image project-image">
+    <div class="project-vetica-image">
+    <img src="projects/vetica.gif" alt="Printed book of Vetica" class="vetica-image">
+    </div>
     <div class="project-container">
         <div class="project-text3">Vetica is a photographic and typographic exploration on what emerges when Helvetica 
             is removed and replaced with its polar opposite: graffiti. </div>
@@ -113,14 +120,14 @@ Thank you for taking the time to explore this part of my portfolio!-->
             <div class="project-subheading">3D Animation<br> Motion Graphic, Illustration, 3D Design</div>     
         </div>
     </div>
-    <div class="player project-image" id="player">
-        <video id="video" src="projects/AI.mp4" poster="projects/AI-poster.jpg" playsinline></video>
-        <source src="projects/AI.mp4" type="video/mp4">
+    <div class="player project-ai" id="player">
+        <video id="video" src="projects/AI.mp4" poster="projects/AI-poster.jpg" playsinline> <source src="projects/AI.mp4" type="video/mp4"></video>
         <div class="controls">
             <button id="play">Play</button>
             <input id="seek" type="range" min="0" max="100" value="0" step="0.1"/>
             <span id="time">0:00 / 0:00</span>
             <button id="mute">Mute</button>
+            <button id="fullscreen">Fullscreen</button>
         </div>
     </div>
         <div class="project-container">
@@ -166,7 +173,7 @@ Thank you for taking the time to explore this part of my portfolio!-->
 
 <!-- Cursor -->
 <div id="follower"></div>
-
+</div>
 </body>
 </html>
 

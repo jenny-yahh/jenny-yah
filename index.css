@@ -20,37 +20,600 @@ Fonts
   font-style: normal;
 }
 
+body {
+background-color: #dfdfda;
+}
+
 /* =======================
 Cursor
 ======================= */
+
+@media (hover: hover) and (pointer: fine) {
 *{
 cursor: none;
-color: black;
-text-decoration: none;
 }
+}
+
 #follower {
-position: absolute;
+position: fixed;
 width: 50px;
 height: 50px;
-border: 1px solid #000;
+border: 1px solid rgb(0, 0, 0);
 background-color: transparent;
 border-radius: 50%;
 pointer-events: none;
 z-index: 9999;
-bottom: 100%;
-left:0;
+left: 0;
+top: 0;
+display: none;
 }
+
+@media (hover: hover) and (pointer: fine) {
+#follower {
+display: block;
+}
+}
+
 .content {
 z-index: 1;
 }
 
+/* custom cursor normally */
+.player,
+.player * {
+  cursor: none;
+}
+
+/* restore default cursor in fullscreen */
+.player:fullscreen,
+.player:fullscreen * {
+  cursor: auto;
+}
+
+/* =======================
+Text
+======================= */
+*{
+color:rgb(5, 0, 162);
+text-decoration: none;
+}
+
+h1{
+font-family: "Red Hat Mono", monospace;   
+font-weight: 300;
+font-style: italic;
+}
+p{
+font-family: "Red Hat Mono", monospace;
+font-weight: 300;
+}
+footer{
+font-family: "Red Hat Mono", monospace;
+text-transform: uppercase;
+font-weight: 300;
+text-transform: uppercase;
+position: fixed;
+bottom: 0;
+}
+.project-text{
+font-family: "Red Hat Mono", serif;
+font-weight: 300;
+}
+.jenny-kim{
+font-family: "Compagnon-LightItalic", serif;
+color: rgb(0, 0, 0);
+}
+
+/* =======================
+Hover Effect
+======================= */
+/* Hover for hyperlinks */
+a{
+text-decoration: none;
+color: rgb(0, 0, 0);
+position: relative;
+transition: color 0.3s ease;
+}
+/* Underline animation */
+a::after{
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0;
+height: 1px;
+background-color: rgb(0, 0, 0);
+transition: width 0.3s ease;
+}
+a:hover::after{
+width: 100%;
+}
+/* Underline for Projects */
+.work{
+color: rgb(0, 0, 0);
+position: relative;
+transition: transform 0.1s ease; 
+white-space: nowrap; 
+text-decoration: none;
+}
+.work::after{
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0;
+height: 2.5px;
+background-color: rgb(0, 0, 0);
+transition: width 0.3s ease; 
+}
+.work:hover::after{
+width: 100%;
+text-decoration: underline;
+background-color: rgb(0, 0, 0);
+}
+.work.active-link::after {
+width: 100%;
+background-color: rgb(0, 0, 0);
+}
+.email {
+color:rgb(0, 0, 0);
+position: relative;
+display: inline-block;
+transition: transform 0.1s ease-in-out, color 0.2s;
+text-decoration: none;
+content: "\A";
+}
+/* Create the animated underline */
+.email::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0;
+height: 1px;
+background-color: rgb(0, 0, 0);
+transition: width 0.25s ease-in-out;
+}
+/* Animate the underline on hover */
+.email:hover::after {
+width: 100%;
+}
+/* Click effect */
+.email:active {
+transform: scale(0.95);
+color: rgb(0, 0, 0); 
+}
+/* To show email copied message */
+.copy-message {
+position: absolute;
+background: #bfbfbce9;
+color: rgb(0, 0, 0);
+padding: 5px 10px;
+border-radius: 10px;
+font-size: 13px;
+transition: opacity 0.3s ease-in-out;
+pointer-events: none;
+font-family: "red hat mono", serif;
+}
+
+/* =======================
+Project
+======================= */
+/* text layout of project for all text*/
+.project{
+position: fixed;
+top:0;
+left: 0;
+background-color: #d9d9d1ef;
+z-index: 2;
+overflow-y: auto;
+overflow-x: hidden;
+}
+.project-container{
+background-color: transparent;
+z-index: 3;
+margin-left: 2%;
+margin-top: 1%; 
+margin-bottom: 3%;
+}
+.project-subheading{
+word-spacing: -5px;
+width: 60%;
+line-height: 140%;
+}
+.project-text3{ 
+margin-right: 1.7%;
+word-spacing: 1px;
+line-height: 140%;
+}
+
+/* vetica */
+.project-vetica-image{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+padding-left: 10%;
+padding-right: 10%;
+margin: 5% auto;
+background-color: transparent;
+box-sizing: border-box;
+}
+
+.vetica-image {
+height: auto;
+display: block;
+}
+
+/* ai */
+.project-ai{
+align-items: center;
+display: block;   
+margin: 5% auto;  
+background-color: transparent;
+}
+
+.player {
+width: 96%;
+max-width: 100%;
+}
+
+.player video {
+width: 100%;
+display: block;  
+}
+
+#time{
+font-family: "Red Hat Mono", serif;
+font-size: 13px;
+color: rgb(0, 0, 0);
+font-weight: 400;
+}
+
+.controls {
+display: grid;
+grid-template-columns: auto 1fr auto auto auto auto;
+gap: 10px;
+align-items: center;
+padding: 10px;
+background: #d9d9d1;
+font-family: "Red Hat Mono", serif;
+}
+.controls button {
+border: 0;
+padding: 5px 10px;
+border-radius: 10px;
+color:rgb(0, 0, 0);
+font-family: "Red Hat Mono", serif;
+background-color: #bfbfbce9;
+font-size: 13px;
+}
+
+.controls input[type="range"] {
+width: 100%;
+}
+
+.player:fullscreen {
+width: 100vw;
+height: 100vh;
+background: black;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.player:fullscreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.player:fullscreen .controls {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* ===== SEEK BAR TRACK ===== */
+#seek {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 10px;
+}
+/* ===== Chrome / Safari track ===== */
+#seek::-webkit-slider-runnable-track {
+  height: 3px;
+  background: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+/* ===== Chrome / Safari thumb ===== */
+#seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: rgb(0, 0, 0);
+  margin-top: -3.5px;
+}
+
+
+
+/* =======================
+Phone Screen 
+======================= */
+/*Phone Screen*/ @media (min-width: 240px) and (max-width: 360px){
+/* Layout */
+.grid-container {
+z-index: 1;
+min-height: 100vh;
+margin: 0 auto;
+padding-left: .2%;
+padding-right: .2%;
+position: relative;
+}
+
+.project-phone{
+position: fixed;
+bottom:3%;
+}
+
+.bottom-footer{
+position:relative;
+top: 10px;
+flex-direction: column;
+}
+
+.footer-left, .footer-right{
+width: 100%;
+}
+
+.jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
+display: inline;
+margin:0px;
+line-height: 1;
+opacity: 1 !important;
+}
+
+/* Text */
+h1{
+font-size: 20px;
+line-height: 28px;
+}
+p{
+font-size: 10px;
+}
+footer{
+font-size: 5px;
+}
+.jenny-kim{
+font-size: 12px;
+}
+.project-text{
+font-size: 10px;
+}
+
+
+/* =======================
+Project
+======================= */
+.project {
+width: 100%;
+height: clamp(65%, 103vw, 70%);
+transform: translateY(-100%);
+transition: transform 0.5s ease;
+}
+
+.project.open {
+  transform: translateY(0);
+}
+
+/* For all project text and layout*/
+.project-text{
+font-size: 10px;
+}
+
+.work::after{
+height: 1px;
+}
+
+.vetica-image {
+width:clamp(235px,85vw, 365px);
+height: auto;
+display: block;
+}
+
+#time, .controls button{
+font-size: 7px;
+padding: 2px 6px;
+}
+}
+
+/* =======================
+Phone Screen 
+======================= */
+/*Phone Screen*/ @media (min-width: 360px) and (max-width: 500px){
+/* Layout */
+.grid-container {
+z-index: 1;
+min-height: 100vh;
+margin: 0 auto;
+padding-left: .2%;
+padding-right: .2%;
+position: relative;
+}
+
+.project-phone{
+position: fixed;
+bottom:3%;
+}
+
+.bottom-footer{
+position:relative;
+top: 10px;
+flex-direction: column;
+}
+
+.footer-left, .footer-right{
+width: 100%;
+}
+
+.jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
+display: inline;
+margin:0px;
+line-height: 1;
+opacity: 1 !important;
+}
+
+/* Text */
+h1{
+font-size: 20px;
+line-height: 28px;
+}
+p{
+font-size: 10px;
+}
+footer{
+font-size: 5px;
+}
+.jenny-kim{
+font-size: 11px;
+}
+.project-text{
+font-size: 10px;
+}
+
+/* =======================
+Project
+======================= */
+.project {
+width: 100%;
+height: clamp(74%, 82vw, 74%);
+transform: translateY(-100%);
+transition: transform 0.5s ease;
+}
+
+.project.open {
+  transform: translateY(0);
+}
+
+/* For all project text and layout*/
+.project-text{
+font-size: 10px;
+}
+
+.work::after{
+height: 1px;
+}
+
+.vetica-image {
+width:clamp(235px,85vw, 365px);
+height: auto;
+display: block;
+}
+
+#time, .controls button{
+font-size: 9px;
+padding: 4px 8px;
+}
+
+}
+
+/* =======================
+Tablet Screen
+======================= */
+/*Tablet Screen*/ @media (min-width: 501px) and (max-width: 984px){
+/* Layout */
+.grid-container {
+z-index: 1;
+min-height: 100vh;
+margin: 0 auto;
+padding-left: .2%;
+padding-right: .2%;
+position: relative;
+}
+
+.project-phone{
+position: fixed;
+bottom:3%;
+}
+
+.bottom-footer{
+position: fixed;
+bottom: 0;
+flex-direction: column;
+}
+
+.footer-left, .footer-right{
+width: 100%;
+}
+
+.jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
+display: inline;
+margin:0px;
+line-height: 140%;
+opacity: 1 !important;
+}
+
+
+/* Text */
+h1{ 
+font-size: clamp(32px, 4.9vw, 42px);
+line-height: 150%;
+letter-spacing: -3px;
+font-style: italic;
+}
+p{
+font-size: 14px;
+word-spacing: -1px;
+margin-bottom: 25px;
+line-height: 134%;
+}
+footer{
+font-size: 10px;
+}
+.social{
+word-spacing: 2px;
+}
+.jenny-kim{
+font-size: 17px;
+}
+.project-text{
+font-size: 14px;
+}
+
+
+/* =======================
+Project
+======================= */
+.project {
+width: 100%;
+height:clamp(67%, 9vw, 70%);
+transform: translateY(-100%);
+transition: transform 0.5s ease;
+}
+.project.open {
+  transform: translateY(0);
+}
+
+.work::after{
+height: 2px;
+}
+
+.vetica-image {
+width:clamp(270px,75vw, 600px);
+height: auto;
+display: block;
+}
+}
+
+/* =======================
+Smaller Laptop Screen
+======================= */
+/*Smaller Laptop Screen*/ @media (min-width: 985px) and (max-width: 1343px){
 /* =======================
 W3b Style
 ======================= */
-body {
-background-color: #dfdfda;
-overflow: hidden;
-}
 /* CSS Grid 2 Columns */
 .grid-container {
 z-index: 500;
@@ -74,163 +637,69 @@ margin-top: -18px;
 .middle-gap{
 margin-left: 1.7%;
 }
+
+.bottom-footer{
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+width: 100%;
+gap: 0px;
+line-height: 1;
+}
+.footer-left, .footer-right{
+width: 50%;
+}
+
+
 /* Text */
-h1{
-font-family: "Red Hat Mono", monospace;   
-font-size: 45px;
-font-weight: 300;
+h1{ 
+font-size: clamp(42px, 3vw, 45px);
 line-height: 150%;
 letter-spacing: -3px;
 font-style: italic;
 }
 p{
-font-size: 16px;
+font-size: clamp(14px, .5vw, 16px);
 word-spacing: -1px;
-font-family: "Red Hat Mono", monospace;
-font-weight: 300;
+
 margin-bottom: 25px;
 line-height: 134%;
 }
 footer{
-font-size: 11px;
-font-family: "Red Hat Mono", monospace;
-font-weight: 300;
-text-transform: uppercase;
-position: fixed;
-bottom: 0;
+font-size: 10px;
 }
 .social{
 word-spacing: 2px;
-font-size: 16px;
 text-align: right;
 }
-/* Hover effects */
+.project-text{
+font-size: clamp(14px, .5vw, 16px);
+}
 .jenny-kim{
-font-family: "Compagnon-LightItalic", serif;
-font-size: 19px;
+font-size: clamp(17px, .5vw, 19px);
 transition: text-shadow .2s ease;
 }
+
 /* Animation of jenny kim hover effect */
-.jenny-kim:hover{
-text-shadow: rgb(0, 0, 0) 0px .5px 1px;
+.hover-jenny:hover .jenny-kim{
+text-shadow: rgb(0, 0, 0) 0px .2px 1px;
 }
 .hidden-text{
 opacity: 0; 
 display: block; 
 margin-top: 20px;
 }
-/* Hover for hyperlinks */
-a{
-text-decoration: none;
-color: black;
-position: relative;
-transition: color 0.3s ease;
-}
-/* Underline animation */
-a::after{
-content: "";
-position: absolute;
-left: 0;
-bottom: 0;
-width: 0;
-height: 1px;
-background-color: black;
-transition: width 0.3s ease;
-}
-a:hover::after{
-width: 100%;
-}
-/* Underline for Projects */
-.work{
-color: black;
-position: relative;
-transition: transform 0.1s ease; 
-white-space: nowrap; 
-text-decoration: none;
-}
-.work::after{
-content: "";
-position: absolute;
-left: 0;
-bottom: 0;
-width: 0;
-height: 2.5px;
-background-color: black;
-transition: width 0.3s ease; 
-}
-.work:hover::after{
-width: 100%;
-text-decoration: underline;
-background-color: #000000;
-}
-.work.active-link::after {
-width: 100%;
-background-color: black;
-}
-.email {
-font-size: 16px;
-color: black;
-position: relative;
-display: inline-block;
-transition: transform 0.1s ease-in-out, color 0.2s;
-text-decoration: none;
-}
-/* Create the animated underline */
-.email::after {
-content: "";
-position: absolute;
-left: 0;
-bottom: 0;
-width: 0;
-height: 1px;
-background-color: black;
-transition: width 0.25s ease-in-out;
-}
-/* Animate the underline on hover */
-.email:hover::after {
-width: 100%;
-}
-/* Click effect */
-.email:active {
-transform: scale(0.95);
-color: black; 
-}
-/* To show email copied message */
-.copy-message {
-position: absolute;
-background: #bfbfbce9;
-color: black;
-padding: 5px 10px;
-border-radius: 10px;
-font-size: 13px;
-transition: opacity 0.3s ease-in-out;
-pointer-events: none;
-font-family: "red hat mono", serif;
-}
 
 /* =======================
 Project
 ======================= */
 .project {
-position: fixed;
-top: 0;
-left: 0;
 width: 50%;
 height: 100%;
-background-color: #d9d9d1ef;
 transform: translateX(-100%);
 transition: transform 0.5s ease;
-z-index: 2;
-overflow-y: auto;
-overflow-x: hidden;
 }
-/* For all project text and layout*/
-.project-text{
-color: black;
-font-family: "Red Hat Mono", serif;
-font-weight: 300;
-font-size: 17px;
-}
+
 .project.open{
 transform: translateX(0);
 }
@@ -251,17 +720,12 @@ margin-right: 1.7%;
 word-spacing: 1px;
 line-height: 140%;
 }
-/* For all images and projects */
-.project-image {
-align-items: center;
-display: block;   
-margin: 5% auto;  
-background-color: transparent;
-}
 
-/*VETICA*/
-.vetica-image{
-width: 600px;
+/* vetica */
+.vetica-image {
+width:clamp(490px,45vw,620px);
+height: auto;
+display: block;
 }
 
 /*AI*/
@@ -269,59 +733,110 @@ width: 600px;
   width: 96%;
   max-width: 100%;
 }
-
-.player video {
-  width: 100%;
-  display: block;  
 }
 
-#time{
-font-family: "Red Hat Mono", serif;
-font-size: 13px;
-color: #000000;
-font-weight: 400;
+/* =======================
+Laptops/ Desktops Defaults
+======================= */
+/*Laptops Desktops*/ @media (min-width:1344px) and (max-width: 1649px){
+/* =======================
+W3b Style
+======================= */
+/* CSS Grid 2 Columns */
+.grid-container {
+z-index: 500;
+display:grid;
+grid-template-columns: 50% 50%;
+grid-template-rows: 55% 45%; 
+height: 100vh;
+margin: 0 auto;
+padding-left: .2%;
+padding-right: .2%;
+}
+/* Flexbox 2 columns each */
+.flex-container{
+display: flex;
+}
+/* Note-fill the flex-container */
+.flex-item{
+flex:1;
+margin-top: -18px;
+}
+.middle-gap{
+margin-left: 1.7%;
 }
 
-.controls {
-  display: grid;
-  grid-template-columns: auto 1fr auto auto auto auto;
-  gap: 10px;
-  align-items: center;
-  padding: 10px;
-  background: #d9d9d1;
-  font-family: "Red Hat Mono", serif;
+.bottom-footer{
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+width: 100%;
+gap: 0px;
+line-height: 1;
 }
-.controls button {
-border: 0;
-padding: 5px 10px;
-border-radius: 10px;
-color: #000000;
-font-family: "Red Hat Mono", serif;
-background-color: #bfbfbce9;
-font-size: 13px;
+.footer-left, .footer-right{
+width: 50%;
 }
-.controls input[type="range"] {
-  width: 100%;
+
+
+/* Text */
+h1{   
+font-size: 45px;
+line-height: 150%;
+letter-spacing: -3px;
 }
-/* ===== SEEK BAR TRACK ===== */
-#seek {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 3px;
-  border-radius: 10px;
+p{
+font-size: 16px;
+word-spacing: -1px;
+margin-bottom: 25px;
+line-height: 134%;
 }
-/* ===== Chrome / Safari track ===== */
-#seek::-webkit-slider-runnable-track {
-  height: 3px;
-  background: #000000;
-  border-radius: 10px;
+footer{
+font-size: 10px;
+position: fixed;
+bottom: 0;
 }
-/* ===== Chrome / Safari thumb ===== */
-#seek::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  background: #000000; /* knob color */
-  margin-top: -3.5px;
+.social{
+word-spacing: 2px;
+text-align: right;
+}
+/* For all project text and layout*/
+.project-text{
+font-size: 16px;
+}
+
+.jenny-kim{
+font-size: 19px;
+transition: text-shadow .2s ease;
+}
+/* Animation of jenny kim hover effect */
+.hover-jenny:hover .jenny-kim{
+text-shadow: rgb(0, 0, 0) 0px .2px 1px;
+}
+
+.hidden-text{
+opacity: 0; 
+display: block; 
+margin-top: 20px;
+}
+
+/* =======================
+Project
+======================= */
+.project {
+width: 50%;
+height: 100%;
+transform: translateX(-100%);
+transition: transform 0.5s ease;
+}
+
+.project.open{
+transform: translateX(0);
+}
+/* vetica */
+.vetica-image {
+width:600px;
+height: auto;
+display: block;
+}
 }
