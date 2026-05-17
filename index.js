@@ -14,42 +14,59 @@ document.addEventListener("DOMContentLoaded", function() {
 /* =======================
 Cursor
 ======================= */
-const follower = document.getElementById('follower');
+const hasMouse = window.matchMedia(
+  "(hover: hover) and (pointer: fine)"
+).matches;
 
-document.addEventListener('mousemove', (event) => {
-  const x = event.clientX;
-  const y = event.clientY;
+if (hasMouse) {
 
-  // Position the follower such that its center is at the mouse cursor
-  const offsetX = -follower.offsetWidth / 2;
-  const offsetY = -follower.offsetHeight / 2;
+  const follower = document.getElementById('follower');
 
-  follower.style.left = (x + offsetX) + 'px';
-  follower.style.top = (y + offsetY) + 'px';
-});
+  document.addEventListener('mousemove', (event) => {
+    const x = event.clientX;
+    const y = event.clientY;
+
+    // Position the follower such that its center is at the mouse cursor
+    const offsetX = -follower.offsetWidth / 2;
+    const offsetY = -follower.offsetHeight / 2;
+
+    follower.style.left = (x + offsetX) + 'px';
+    follower.style.top = (y + offsetY) + 'px';
+  });
+
+}
 
 /* =======================
 Bio-Hover
 ======================= */
-// Get the elements
+
 const hoverJenny = document.querySelector('.hover-jenny');
 const hiddenTexts = document.querySelectorAll('.hidden-text');
-// Function to show the hidden text
+
+const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
 function showHiddenText() {
   hiddenTexts.forEach(text => {
-    text.style.opacity = '1'; // Make the hidden text visible
-    text.style.transition = 'opacity 0.5s ease'; // Add smooth transition
+    text.style.opacity = '1';
+    text.style.transition = 'opacity 0.5s ease';
   });
 }
-// Function to hide the hidden text
+
 function hideHiddenText() {
   hiddenTexts.forEach(text => {
-    text.style.opacity = '0'; // Hide the text
+    text.style.opacity = '0';
   });
 }
-// Add event listeners to handle hover
-hoverJenny.addEventListener('mouseenter', showHiddenText); // Show text when hovering over Jenny kim
-hoverJenny.addEventListener('mouseleave', hideHiddenText); // Hide text when mouse leaves
+
+if (canHover && hoverJenny) {
+  hoverJenny.addEventListener('mouseenter', showHiddenText);
+  hoverJenny.addEventListener('mouseleave', hideHiddenText);
+} else {
+  hiddenTexts.forEach(text => {
+    text.style.opacity = '1';
+    text.style.transition = 'none';
+  });
+}
 
 /* =======================
 Project 
@@ -141,11 +158,12 @@ function showCopyMessage(x, y) {
 AI video
 ======================= */
 const video = document.getElementById("video");
-  const play = document.getElementById("play");
-  const mute = document.getElementById("mute");
-  const seek = document.getElementById("seek");
-  const time = document.getElementById("time");
-  const player = document.getElementById("player");
+const play = document.getElementById("play");
+const mute = document.getElementById("mute");
+const seek = document.getElementById("seek");
+const time = document.getElementById("time");
+const player = document.getElementById("player");
+const fullscreen = document.getElementById("fullscreen");
 
   const fmt = (s) => {
     s = Math.max(0, s || 0);
@@ -222,4 +240,30 @@ document.body.addEventListener("click", function (event) {
       }
     }
   });
+});
+
+
+// FULLSCREEN
+fullscreen.addEventListener("click", async () => {
+  try {
+    if (!document.fullscreenElement) {
+      await player.requestFullscreen();
+      fullscreen.textContent = "Exit";
+    } else {
+
+      await document.exitFullscreen();
+      fullscreen.textContent = "Fullscreen";
+    }
+
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// keep button text synced
+document.addEventListener("fullscreenchange", () => {
+  fullscreen.textContent =
+    document.fullscreenElement
+      ? "Exit"
+      : "Fullscreen";
 });
