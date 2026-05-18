@@ -441,101 +441,6 @@ padding: 2px 6px;
 }
 
 /* =======================
-Phone Screen landscape
-======================= */
-@media (orientation: landscape) and (max-height: 500px) {
-*{
-color:rgb(186, 10, 134);
-}
-
-  /* Layout */
-.grid-container {
-z-index: 1;
-min-height: 100vh;
-margin: 0 auto;
-padding-left: .2%;
-padding-right: .2%;
-position: relative;
-}
-
-.project-phone{
-position: fixed;
-bottom:3%;
-}
-
-.bottom-footer{
-position: fixed;
-bottom: 0px;
-flex-direction: column;
-}
-
-.footer-left, .footer-right{
-width: 100%;
-}
-
-.jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
-display: inline;
-margin:0px;
-line-height: 20px;
-opacity: 1 !important;
-}
-
-/* Text */
-h1{
-font-size: 24px;
-line-height: 36px;
-}
-p{
-font-size: 14px;
-}
-footer{
-font-size: 8px;
-letter-spacing: 2%;
-}
-.jenny-kim{
-font-size: 16px;
-text-shadow: rgb(0, 0, 0) 0px .1px 1px;
-}
-.project-text{
-font-size: 14px;
-}
-
-/* =======================
-Project
-======================= */
-.project {
-width: 100%;
-height: clamp(65%, 82vw, 67%);
-transform: translateY(-100%);
-transition: transform 0.5s ease;
-}
-
-.project.open {
-  transform: translateY(0);
-}
-
-.work::after{
-height: 1px;
-}
-
-.vetica-image {
-width:clamp(235px,85vw, 365px);
-height: auto;
-display: block;
-}
-
-/* hommali */
-.hommali-image{
-width:310px;
-}
-
-#time, .controls button{
-font-size: 9px;
-padding: 4px 8px;
-}
-}
-
-/* =======================
 Phone Screen vertical
 ======================= */
 /*Phone Screen*/ @media (min-width: 360px) and (max-width: 500px){
@@ -628,8 +533,102 @@ width:280px;
 font-size: 9px;
 padding: 4px 8px;
 }
-
 }
+
+/* =======================
+Phone Screen landscape
+======================= */
+@media (orientation: landscape) and (max-height: 500px) {
+*{
+color:rgb(186, 10, 134);
+}
+
+  /* Layout */
+.grid-container {
+z-index: 1;
+min-height: 100vh;
+margin: 0 auto;
+padding-left: .2%;
+padding-right: .2%;
+position: relative;
+}
+
+.project-phone{
+position: fixed;
+bottom:3%;
+}
+
+.bottom-footer{
+position: fixed;
+bottom: 0px;
+flex-direction: column;
+}
+
+.footer-left, .footer-right{
+width: 100%;
+}
+
+.jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
+display: inline;
+margin:0px;
+line-height: 16px;
+opacity: 1 !important;
+}
+
+/* Text */
+h1{
+font-size: 12px;
+line-height: 32px;
+}
+p{
+font-size: 7px;
+}
+footer{
+font-size: 5px;
+letter-spacing: 2%;
+}
+.jenny-kim{
+font-size: 10px;
+text-shadow: rgb(0, 0, 0) 0px .1px 1px;
+}
+.project-text{
+font-size: 7px;
+}
+
+/* =======================
+Project
+======================= */
+.project {
+width: 50%;
+height: 100%;
+transform: translateX(-100%);
+transition: transform 0.5s ease;
+}
+
+.project.open{
+transform: translateX(0);
+}
+.work::after{
+height: 1px;
+}
+
+.vetica-image {
+width:clamp(235px,85vw, 365px);
+height: auto;
+display: block;
+}
+
+/* hommali */
+.hommali-image{
+width:100px;
+}
+
+#time, .controls button{
+font-size: 9px;
+padding: 4px 8px;
+}
+}
+
 
 /* =======================
 Tablet Screen
