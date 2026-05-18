@@ -245,12 +245,20 @@ document.body.addEventListener("click", function (event) {
 
 // FULLSCREEN
 fullscreen.addEventListener("click", async () => {
+
   try {
+
+    // iPhone Safari
+    if (video.webkitEnterFullscreen) {
+      video.webkitEnterFullscreen();
+      return;
+    }
+
+    // Desktop + other browsers
     if (!document.fullscreenElement) {
       await player.requestFullscreen();
       fullscreen.textContent = "Exit";
     } else {
-
       await document.exitFullscreen();
       fullscreen.textContent = "Fullscreen";
     }
@@ -259,6 +267,7 @@ fullscreen.addEventListener("click", async () => {
     console.log(err);
   }
 });
+
 
 // keep button text synced
 document.addEventListener("fullscreenchange", () => {
