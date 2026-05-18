@@ -439,7 +439,7 @@ Phone Screen
 ======================= */
 /*Phone Screen*/ @media (min-width: 360px) and (max-width: 500px){
 *{
-color:rgb(39, 206, 70);
+color:rgb(4, 82, 18);
 }
 
   /* Layout */
@@ -458,8 +458,8 @@ bottom:3%;
 }
 
 .bottom-footer{
-position:fixed;
-bottom: 6px;
+position: fixed;
+bottom: 0px;
 flex-direction: column;
 }
 
@@ -470,27 +470,28 @@ width: 100%;
 .jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
 display: inline;
 margin:0px;
-line-height: 1;
+line-height: 24px;
 opacity: 1 !important;
 }
 
 /* Text */
 h1{
 font-size: 24px;
-line-height: 34px;
+line-height: 46px;
 }
 p{
-font-size: 12px;
+font-size: 14px;
 }
 footer{
-font-size: 6.5px;
+font-size: 9px;
+letter-spacing: 2%;
 }
 .jenny-kim{
-font-size: 14px;
+font-size: 16px;
 text-shadow: rgb(0, 0, 0) 0px .1px 1px;
 }
 .project-text{
-font-size: 12px;
+font-size: 14px;
 }
 
 /* =======================
