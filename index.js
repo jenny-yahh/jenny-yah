@@ -125,6 +125,124 @@ document.querySelectorAll('.project').forEach(project => {
     });
 });
 
+
+
+/* =======================
+Mobile swipe-up project close
+======================= */
+
+const touchQuery = window.matchMedia('(max-width: 984px) and (pointer: coarse)');
+
+let touchStartY = 0;
+let touchCurrentY = 0;
+let touchStartTime = 0;
+let activeSwipeProject = null;
+let isDraggingProject = false;
+
+function isTouchscreen() {
+    return touchQuery.matches;
+}
+
+function isProjectNearBottom(project) {
+    const distanceFromBottom =
+        project.scrollHeight - project.scrollTop - project.clientHeight;
+
+    return distanceFromBottom < 12;
+}
+
+function closeProject(project) {
+    project.classList.remove('open');
+    project.style.transform = '';
+    project.style.opacity = '';
+
+    const projectNumber = project.id.replace('project', '');
+    const activeLink = document.querySelector(
+        `.link.work[onclick="toggleProject(${projectNumber})"]`
+    );
+
+    if (activeLink) {
+        activeLink.classList.remove('active-link');
+    }
+}
+
+document.querySelectorAll('.project').forEach(project => {
+    project.addEventListener('touchstart', function(event) {
+        if (!isTouchscreen()) return;
+        if (!project.classList.contains('open')) return;
+        if (!isProjectNearBottom(project)) return;
+
+        touchStartY = event.touches[0].clientY;
+        touchCurrentY = touchStartY;
+        touchStartTime = Date.now();
+        activeSwipeProject = project;
+        isDraggingProject = false;
+
+        project.style.transition = 'none';
+    }, { passive: true });
+
+    project.addEventListener('touchmove', function(event) {
+        if (!activeSwipeProject) return;
+        if (!isTouchscreen()) return;
+
+        touchCurrentY = event.touches[0].clientY;
+
+        const swipeDistance = touchStartY - touchCurrentY;
+
+        // Only react to upward swipes.
+        if (swipeDistance <= 0) return;
+
+        // Wait a little before taking over, so normal scrolling still feels normal.
+        if (swipeDistance > 16) {
+            isDraggingProject = true;
+        }
+
+        if (!isDraggingProject) return;
+
+        event.preventDefault();
+
+        const progress = Math.min(swipeDistance / window.innerHeight, 1);
+        const translateY = -progress * 100;
+
+        activeSwipeProject.style.transform = `translateY(${translateY}vh)`;
+        activeSwipeProject.style.opacity = `${1 - progress * 0.25}`;
+    }, { passive: false });
+
+    project.addEventListener('touchend', function() {
+        if (!activeSwipeProject) return;
+
+        const swipeDistance = touchStartY - touchCurrentY;
+        const swipeTime = Date.now() - touchStartTime;
+        const swipeVelocity = swipeDistance / swipeTime;
+
+        activeSwipeProject.style.transition =
+            'transform 280ms ease, opacity 280ms ease';
+
+        const shouldClose =
+            swipeDistance > window.innerHeight * 0.28 ||
+            swipeVelocity > 0.7;
+
+        if (shouldClose) {
+            activeSwipeProject.style.transform = 'translateY(-100vh)';
+            activeSwipeProject.style.opacity = '0';
+
+            const projectToClose = activeSwipeProject;
+
+            setTimeout(() => {
+                closeProject(projectToClose);
+            }, 280);
+        } else {
+            activeSwipeProject.style.transform = '';
+            activeSwipeProject.style.opacity = '';
+        }
+
+        activeSwipeProject = null;
+        isDraggingProject = false;
+    });
+});
+
+
+
+
 /* =======================
 Copy
 ======================= */

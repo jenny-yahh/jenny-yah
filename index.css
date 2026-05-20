@@ -408,6 +408,7 @@ width: 100%;
 height: clamp(55%, 103vw, 60%);
 transform: translateY(-100%);
 transition: transform 0.5s ease;
+will-change: transform, opacity;
 }
 
 .project.open {
@@ -508,6 +509,7 @@ width: 100%;
 height: clamp(65%, 82vw, 67%);
 transform: translateY(-100%);
 transition: transform 0.5s ease;
+will-change: transform, opacity;
 }
 
 .project.open {
@@ -603,6 +605,7 @@ width: 50%;
 height: 100%;
 transform: translateX(-100%);
 transition: transform 0.5s ease;
+will-change: transform, opacity;
 }
 
 .project.open{
@@ -702,6 +705,7 @@ width: 100%;
 height:clamp(67%, 9vw, 70%);
 transform: translateY(-100%);
 transition: transform 0.5s ease;
+will-change: transform, opacity;
 }
 .project.open {
   transform: translateY(0);
@@ -872,7 +876,7 @@ W3b Style
 z-index: 500;
 display:grid;
 grid-template-columns: 50% 50%;
-grid-template-rows: 55% 45%; 
+grid-template-rows: 54% 46%; 
 height: 100vh;
 margin: 0 auto;
 padding-left: .2%;
