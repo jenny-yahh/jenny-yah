@@ -1,4 +1,27 @@
 /* =======================
+preloading page
+======================= */
+window.addEventListener("load", () => {
+  const loader = document.getElementById("preloader");
+  const loadingText = document.querySelector(".loader-text");
+
+  let aCount = 1;
+
+  const typeMoreAs = setInterval(() => {
+    aCount += 1;
+    loadingText.textContent = `Y${"A".repeat(aCount)}H!`;
+  }, 160);
+
+  setTimeout(() => {
+    clearInterval(typeMoreAs);
+    loader.classList.add("fade-out");
+    document.body.style.overflow = "auto";
+  }, 1500);
+});
+
+
+
+/* =======================
 W3b Title
 ======================= */
 document.addEventListener("DOMContentLoaded", function() {
