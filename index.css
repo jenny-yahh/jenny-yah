@@ -71,6 +71,34 @@ z-index: 1;
 }
 
 /* =======================
+preloading page ^
+======================= */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #bfbfbc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.9s ease;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-text {
+  font-family: "Compagnon-LightItalic", monospace;
+  font-weight: 300;
+  font-size: 50px;
+}
+
+/* =======================
 Text
 ======================= */
 *{
@@ -345,6 +373,7 @@ Phone Screen
 /*Phone Screen*/ @media (min-width: 240px) and (max-width: 360px){
 *{
 color:rgb(255, 73, 185);
+overflow-y: hidden;
 }
 
 /* Layout */
@@ -363,8 +392,8 @@ bottom:3%;
 }
 
 .bottom-footer{
-position:relative;
-top: 10px;
+position:fixed;
+bottom: 1px;
 flex-direction: column;
 }
 
@@ -382,7 +411,7 @@ opacity: 1 !important;
 /* Text */
 h1{
 font-size: 24px;
-line-height: 35px;
+line-height: 42px;
 }
 p{
 font-size: 14px;
@@ -407,17 +436,12 @@ Project
 width: 100%;
 height: clamp(55%, 103vw, 60%);
 transform: translateY(-100%);
-transition: transform 0.5s ease;
+transition: transform 0.8s ease;
 will-change: transform, opacity;
 }
 
 .project.open {
   transform: translateY(0);
-}
-
-/* For all project text and layout*/
-.project-text{
-font-size: 10px;
 }
 
 .work::after{
@@ -447,6 +471,7 @@ Phone Screen vertical
 /*Phone Screen*/ @media (min-width: 360px) and (max-width: 500px){
 *{
 color:rgb(4, 82, 18);
+overflow-y: hidden;
 }
 
   /* Layout */
@@ -466,7 +491,7 @@ bottom:3%;
 
 .bottom-footer{
 position: fixed;
-bottom: 0px;
+bottom: 1px;
 flex-direction: column;
 }
 
@@ -508,7 +533,7 @@ Project
 width: 100%;
 height: clamp(65%, 82vw, 67%);
 transform: translateY(-100%);
-transition: transform 0.5s ease;
+transition: transform 0.8s ease;
 will-change: transform, opacity;
 }
 
@@ -540,9 +565,10 @@ padding: 4px 8px;
 /* =======================
 Phone Screen landscape
 ======================= */
-@media (orientation: landscape) and (max-height: 500px) {
+@media (orientation: landscape) and (max-height: 410px) {
 *{
 color:rgb(186, 10, 134);
+overflow-y: hidden;
 }
 
   /* Layout */
@@ -579,24 +605,23 @@ opacity: 1 !important;
 
 /* Text */
 h1{
-font-size: 12px;
-line-height: 32px;
+font-size: 24px;
+line-height: 42px;
 }
 p{
-font-size: 7px;
+font-size: 14px;
 }
 footer{
-font-size: 5px;
+font-size: 8px;
 letter-spacing: 2%;
 }
 .jenny-kim{
-font-size: 10px;
+font-size: 16px;
 text-shadow: rgb(0, 0, 0) 0px .1px 1px;
 }
 .project-text{
-font-size: 7px;
+font-size: 14px;
 }
-
 /* =======================
 Project
 ======================= */
@@ -637,6 +662,10 @@ padding: 4px 8px;
 Tablet Screen
 ======================= */
 /*Tablet Screen*/ @media (min-width: 501px) and (max-width: 984px){
+
+*{
+overflow-y: hidden;
+}
 /* Layout */
 .grid-container {
 z-index: 1;
@@ -734,8 +763,9 @@ Smaller Laptop Screen
 /* =======================
 W3b Style
 ======================= */
-*{
-overflow-x: hidden;
+html,
+body {
+  overflow-x: hidden;
 }
 
 /* CSS Grid 2 Columns */
@@ -760,6 +790,18 @@ margin-top: -18px;
 }
 .middle-gap{
 margin-left: 1.7%;
+}
+
+.grid-item,
+.flex-container,
+.flex-item {
+overflow: visible;
+}
+
+.project-phone{
+position: fixed;
+bottom:3%;
+left: 49%;
 }
 
 .bottom-footer{
@@ -802,18 +844,29 @@ font-size: clamp(14px, .5vw, 16px);
 .jenny-kim{
 font-size: clamp(17px, .5vw, 19px);
 transition: text-shadow .2s ease;
+overflow: visible;
 }
 
 /* Animation of jenny kim hover effect */
 .hover-jenny:hover .jenny-kim{
 text-shadow: rgb(0, 0, 0) 0px .2px 1px;
 }
-.hidden-text{
-opacity: 0; 
-display: block; 
-margin-top: 20px;
+
+.hidden-text {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  display: block;
+  margin-top: 20px;
+  transition: opacity .25s ease, max-height .25s ease;
 }
 
+.hover-jenny:hover + .hidden-text,
+.jenny-phone:hover .hidden-text {
+  opacity: 1;
+  max-height: 300px;
+  overflow: visible;
+}
 /* =======================
 Project
 ======================= */
@@ -839,6 +892,7 @@ word-spacing: -5px;
 width: 60%;
 line-height: 140%;
 }
+
 .project-text3{ 
 margin-right: 1.7%;
 word-spacing: 1px;
@@ -895,6 +949,13 @@ margin-top: -18px;
 margin-left: 1.7%;
 }
 
+
+.project-phone{
+position: fixed;
+bottom:3%;
+left: 49%;
+}
+
 .bottom-footer{
 display: flex;
 justify-content: space-between;
@@ -917,7 +978,6 @@ letter-spacing: -3px;
 p{
 font-size: 16px;
 word-spacing: -1px;
-margin-bottom: 25px;
 line-height: 134%;
 }
 footer{
@@ -945,18 +1005,17 @@ text-shadow: rgb(0, 0, 0) 0px .2px 1px;
 
 .hidden-text{
 opacity: 0; 
-display: block; 
-margin-top: 20px;
+display: block;
 }
 
 /* =======================
 Project
 ======================= */
 .project {
-width: 50%;
-height: 100%;
-transform: translateX(-100%);
-transition: transform 0.5s ease;
+  width: 50%;
+  height: 100%;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
 }
 
 .project.open{
@@ -964,7 +1023,7 @@ transform: translateX(0);
 }
 /* vetica */
 .vetica-image {
-width:600px;
+width:550px;
 height: auto;
 display: block;
 }
