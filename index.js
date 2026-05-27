@@ -96,10 +96,40 @@ Project
 ======================= */
 
 const defaultBodyBackground = '#e0e0d5';
+const projectPanelQuery = window.matchMedia('(max-width: 984px)');
+const projectPanelGap = 35;
 
 const projectBackgroundColors = {
     8: '#e0ddc1'
 };
+
+function setResponsiveProjectHeight() {
+    const selectedWorksLabel = document.querySelector('.project-phone p');
+
+    if (!selectedWorksLabel || !projectPanelQuery.matches) {
+        document.body.style.removeProperty('--project-panel-height');
+        return;
+    }
+
+    const selectedWorksTop = selectedWorksLabel.getBoundingClientRect().top;
+    const panelHeight = Math.max(0, selectedWorksTop - projectPanelGap);
+
+    document.body.style.setProperty('--project-panel-height', `${panelHeight}px`);
+}
+
+setResponsiveProjectHeight();
+window.addEventListener('load', setResponsiveProjectHeight);
+window.addEventListener('resize', setResponsiveProjectHeight);
+
+if (document.fonts) {
+    document.fonts.ready.then(setResponsiveProjectHeight);
+}
+
+if (projectPanelQuery.addEventListener) {
+    projectPanelQuery.addEventListener('change', setResponsiveProjectHeight);
+} else {
+    projectPanelQuery.addListener(setResponsiveProjectHeight);
+}
 
 function setBodyBackground(projectNumber, isOpen) {
     document.body.style.backgroundColor =
@@ -126,6 +156,8 @@ function toggleProject(projectNumber) {
 
     const project = document.getElementById('project' + projectNumber);
     const activeLink = document.querySelector(`.link.work[onclick="toggleProject(${projectNumber})"]`);
+
+    setResponsiveProjectHeight();
 
     const isOpen = project.classList.toggle('open');
 
