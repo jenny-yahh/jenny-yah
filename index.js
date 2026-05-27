@@ -138,24 +138,43 @@ function setBodyBackground(projectNumber, isOpen) {
             : defaultBodyBackground;
 }
 
+function getProjectLink(projectNumber) {
+    return document.querySelector(`.link.work[onclick="toggleProject(${projectNumber})"]`);
+}
+
+function closeProject(project) {
+    project.classList.remove('open');
+    project.style.transform = '';
+    project.style.opacity = '';
+
+    const projectNumber = project.id.replace('project', '');
+    const activeLink = getProjectLink(projectNumber);
+
+    if (activeLink) {
+        activeLink.classList.remove('active-link');
+    }
+
+    setBodyBackground(null, false);
+}
+
 function toggleProject(projectNumber) {
     const allProjects = document.querySelectorAll('.project');
     const allLinks = document.querySelectorAll('.link.work');
 
     allProjects.forEach(project => {
         if (project.id !== 'project' + projectNumber) {
-            project.classList.remove('open');
+            closeProject(project);
         }
     });
 
     allLinks.forEach(link => {
-        if (link !== document.querySelector(`.link.work[onclick="toggleProject(${projectNumber})"]`)) {
+        if (link !== getProjectLink(projectNumber)) {
             link.classList.remove('active-link');
         }
     });
 
     const project = document.getElementById('project' + projectNumber);
-    const activeLink = document.querySelector(`.link.work[onclick="toggleProject(${projectNumber})"]`);
+    const activeLink = getProjectLink(projectNumber);
 
     setResponsiveProjectHeight();
 
@@ -178,14 +197,7 @@ document.body.addEventListener('click', function(event) {
         if (project.classList.contains('open') &&
             !project.contains(event.target) &&
             !event.target.closest('.link')) {
-            project.classList.remove('open');
-            setBodyBackground(null, false);
-
-            const activeLink = document.querySelector(`.link.work[onclick="toggleProject(${project.id.replace('project', '')})"]`);
-
-            if (activeLink) {
-                activeLink.classList.remove('active-link');
-            }
+            closeProject(project);
         }
     });
 });
@@ -218,21 +230,6 @@ function isProjectNearBottom(project) {
         project.scrollHeight - project.scrollTop - project.clientHeight;
 
     return distanceFromBottom < 12;
-}
-
-function closeProject(project) {
-    project.classList.remove('open');
-    project.style.transform = '';
-    project.style.opacity = '';
-
-    const projectNumber = project.id.replace('project', '');
-    const activeLink = document.querySelector(
-        `.link.work[onclick="toggleProject(${projectNumber})"]`
-    );
-
-    if (activeLink) {
-        activeLink.classList.remove('active-link');
-    }
 }
 
 document.querySelectorAll('.project').forEach(project => {
