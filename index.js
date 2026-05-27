@@ -94,18 +94,30 @@ if (canHover && hoverJenny) {
 /* =======================
 Project 
 ======================= */
+
+const defaultBodyBackground = '#e0e0d5';
+
+const projectBackgroundColors = {
+    8: '#e0ddc1'
+};
+
+function setBodyBackground(projectNumber, isOpen) {
+    document.body.style.backgroundColor =
+        isOpen && projectBackgroundColors[projectNumber]
+            ? projectBackgroundColors[projectNumber]
+            : defaultBodyBackground;
+}
+
 function toggleProject(projectNumber) {
     const allProjects = document.querySelectorAll('.project');
     const allLinks = document.querySelectorAll('.link.work');
 
-    // Close all other projects
     allProjects.forEach(project => {
         if (project.id !== 'project' + projectNumber) {
             project.classList.remove('open');
         }
     });
 
-    // Remove active-link from all other links
     allLinks.forEach(link => {
         if (link !== document.querySelector(`.link.work[onclick="toggleProject(${projectNumber})"]`)) {
             link.classList.remove('active-link');
@@ -122,18 +134,23 @@ function toggleProject(projectNumber) {
     } else {
         activeLink.classList.remove('active-link');
     }
+
+    setBodyBackground(projectNumber, isOpen);
 }
 
 // Close any project when clicking outside
 document.body.addEventListener('click', function(event) {
     const allProjects = document.querySelectorAll('.project');
+
     allProjects.forEach(project => {
-        // Close project if it's open and clicked outside of it
         if (project.classList.contains('open') &&
             !project.contains(event.target) &&
             !event.target.closest('.link')) {
             project.classList.remove('open');
+            setBodyBackground(null, false);
+
             const activeLink = document.querySelector(`.link.work[onclick="toggleProject(${project.id.replace('project', '')})"]`);
+
             if (activeLink) {
                 activeLink.classList.remove('active-link');
             }
@@ -144,11 +161,9 @@ document.body.addEventListener('click', function(event) {
 // Prevent closing the project when clicking inside the project
 document.querySelectorAll('.project').forEach(project => {
     project.addEventListener('click', function(event) {
-        event.stopPropagation(); // Stop click event from propagating to the body
+        event.stopPropagation();
     });
 });
-
-
 
 /* =======================
 Mobile swipe-up project close
