@@ -142,10 +142,47 @@ function getProjectLink(projectNumber) {
     return document.querySelector(`.link.work[onclick="toggleProject(${projectNumber})"]`);
 }
 
+function formatProjectTime(seconds) {
+    seconds = Math.max(0, seconds || 0);
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, "0");
+    return `${minutes}:${remainingSeconds}`;
+}
+
+function resetProjectContent(project) {
+    project.scrollTop = 0;
+
+    const projectVideo = project.querySelector("video");
+    const projectPlay = project.querySelector("#play");
+    const projectSeek = project.querySelector("#seek");
+    const projectTime = project.querySelector("#time");
+
+    if (!projectVideo) return;
+
+    projectVideo.pause();
+    projectVideo.currentTime = 0;
+    projectVideo.load();
+
+    if (projectPlay) {
+        projectPlay.textContent = "Play";
+    }
+
+    if (projectSeek) {
+        projectSeek.value = 0;
+    }
+
+    if (projectTime) {
+        const total = isNaN(projectVideo.duration) ? 0 : projectVideo.duration;
+        projectTime.textContent = `${formatProjectTime(0)} / ${formatProjectTime(total)}`;
+    }
+}
+
 function closeProject(project) {
     project.classList.remove('open');
     project.style.transform = '';
     project.style.opacity = '';
+    project.style.transition = '';
+    resetProjectContent(project);
 
     const projectNumber = project.id.replace('project', '');
     const activeLink = getProjectLink(projectNumber);
@@ -155,6 +192,41 @@ function closeProject(project) {
     }
 
     setBodyBackground(null, false);
+}
+
+function closeAllProjects() {
+    document.querySelectorAll('.project').forEach(project => {
+        closeProject(project);
+    });
+}
+
+const shortScreenQuery = window.matchMedia('(max-height: 450px)');
+let wasShortScreen = shortScreenQuery.matches;
+let viewportChangeTimer = null;
+
+function closeProjectsAfterLeavingShortScreen() {
+    const isShortScreen = shortScreenQuery.matches;
+
+    if (wasShortScreen && !isShortScreen) {
+        closeAllProjects();
+    }
+
+    wasShortScreen = isShortScreen;
+    setResponsiveProjectHeight();
+}
+
+function handleProjectViewportChange() {
+    window.clearTimeout(viewportChangeTimer);
+    viewportChangeTimer = window.setTimeout(closeProjectsAfterLeavingShortScreen, 150);
+}
+
+window.addEventListener('resize', handleProjectViewportChange);
+window.addEventListener('orientationchange', handleProjectViewportChange);
+
+if (shortScreenQuery.addEventListener) {
+    shortScreenQuery.addEventListener('change', handleProjectViewportChange);
+} else {
+    shortScreenQuery.addListener(handleProjectViewportChange);
 }
 
 function toggleProject(projectNumber) {
