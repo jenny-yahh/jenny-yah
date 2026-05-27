@@ -403,7 +403,7 @@ bottom:3%;
 }
 
 .bottom-footer{
-position:fixed;
+position:relative;
 bottom: 1px;
 flex-direction: column;
 }
@@ -420,7 +420,7 @@ opacity: 1 !important;
 }
 .jenny-phone{
 position: fixed;
-top: 1px;
+top: 3px;
 }
 .jen{
 margin-top: 8px;
@@ -510,7 +510,7 @@ bottom:3%;
 }
 
 .bottom-footer{
-position: fixed;
+position: relative;
 bottom: 1px;
 flex-direction: column;
 }
@@ -528,7 +528,7 @@ opacity: 1 !important;
 
 .jenny-phone{
 position: fixed;
-top:1px;
+top:3px;
 }
 
 .jen{
@@ -1070,7 +1070,7 @@ overflow: visible;
 .landscape{
 position:fixed;
 bottom: 35px;
-font-size: 14px;
+font-size: 16px;
 color: #ff00a2e9;
 }
 
