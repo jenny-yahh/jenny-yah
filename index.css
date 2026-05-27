@@ -154,8 +154,10 @@ height: 1px;
 background-color: rgb(0, 0, 0);
 transition: width 0.3s ease;
 }
+@media (hover: hover) and (pointer: fine) {
 a:hover::after{
 width: 100%;
+}
 }
 /* Underline for Projects */
 .work{
@@ -175,14 +177,16 @@ height: 2.5px;
 background-color: rgb(0, 0, 0);
 transition: width 0.3s ease; 
 }
+.work.active-link::after {
+width: 100%;
+background-color: rgb(0, 0, 0);
+}
+@media (hover: hover) and (pointer: fine) {
 .work:hover::after{
 width: 100%;
 text-decoration: underline;
 background-color: rgb(0, 0, 0);
 }
-.work.active-link::after {
-width: 100%;
-background-color: rgb(0, 0, 0);
 }
 .email {
 color:rgb(0, 0, 0);
@@ -203,8 +207,10 @@ background-color: rgb(0, 0, 0);
 transition: width 0.25s ease-in-out;
 }
 /* Animate the underline on hover */
+@media (hover: hover) and (pointer: fine) {
 .email:hover::after {
 width: 100%;
+}
 }
 /* Click effect */
 .email:active {
@@ -592,8 +598,12 @@ padding: 4px 8px;
 /* =======================
 Phone Screen landscape
 ======================= */
-@media (orientation: landscape) and (max-height: 410px) {
-.jenny-jenny, h1, project, .project-phone{
+@media (orientation: landscape) and (max-height: 410px){
+*{
+color: #921435e9;
+}
+
+.jenny-jenny, h1, .project, .project-phone{
 display: none;
 }
 
@@ -635,6 +645,7 @@ top:1px;
 }
 
 .landscape{
+display: block;
 position:fixed;
 bottom: 20px;
 font-size: 14px;
@@ -653,7 +664,6 @@ font-size: 16px;
 text-shadow: rgb(0, 0, 0) 0px .1px 1px;
 }
 }
-
 /* =======================
 Tablet Screen
 ======================= */
@@ -761,6 +771,74 @@ width:clamp(450px, 20vw,500px);
 }
 }
 
+/* Keep phone landscape rules last so tablet-width landscape screens still obey them. */
+@media (orientation: landscape) and (max-height: 410px){
+*{
+color: #921435e9;
+}
+
+.jenny-jenny,
+h1,
+.project,
+.project-phone {
+display: none;
+}
+
+.grid-container {
+z-index: 1;
+min-height: 100vh;
+margin: 0 auto;
+padding-left: .2%;
+padding-right: .2%;
+position: relative;
+display: block;
+height: auto;
+}
+
+.bottom-footer{
+position: fixed;
+bottom: 0px;
+flex-direction: column;
+}
+
+.footer-left, .footer-right{
+width: 100%;
+}
+
+.jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
+display: inline;
+margin:0px;
+line-height: 16px;
+opacity: 1 !important;
+}
+
+.jenny-phone{
+position: fixed;
+top:1px;
+}
+
+.landscape{
+display: block;
+position:fixed;
+bottom: 20px;
+font-size: 14px;
+}
+
+p{
+font-size: 14px;
+}
+
+footer{
+font-size: 5px;
+letter-spacing: 2%;
+}
+
+.jenny-kim{
+font-size: 16px;
+text-shadow: rgb(0, 0, 0) 0px .1px 1px;
+}
+}
+
 /* =======================
 Smaller Laptop Screen
 ======================= */
@@ -773,7 +851,7 @@ body {
   overflow-x: hidden;
 }
 
-.jen{
+.jen .landscape{
 display: none;
 }
 
@@ -934,7 +1012,7 @@ Laptops/ Desktops Defaults
 /* =======================
 W3b Style
 ======================= */
-.jen{
+.jen, .landscape{
 display: none;
 }
 
