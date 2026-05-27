@@ -403,7 +403,7 @@ bottom:3%;
 }
 
 .bottom-footer{
-position:relative;
+position:fixed;
 bottom: 1px;
 flex-direction: column;
 }
@@ -510,7 +510,7 @@ bottom:3%;
 }
 
 .bottom-footer{
-position: relative;
+position: fixed;
 bottom: 1px;
 flex-direction: column;
 }
