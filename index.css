@@ -428,7 +428,7 @@ margin-top: 8px;
 
 /* Text */
 h1{
-font-size: 24px;
+font-size: 23px;
 line-height: 42px;
 }
 p{
@@ -537,8 +537,8 @@ margin-top: 12px;
 
 /* Text */
 h1{
-font-size: 24px;
-line-height: 42px;
+font-size: 23px;
+line-height: 40px;
 }
 p{
 font-size: 14px;
@@ -592,76 +592,6 @@ width:280px;
 #time, .controls button{
 font-size: 9px;
 padding: 4px 8px;
-}
-}
-
-/* =======================
-Phone Screen landscape
-======================= */
-@media (orientation: landscape) and (max-height: 410px){
-*{
-color: #921435e9;
-}
-
-.jenny-jenny, h1, .project, .project-phone{
-display: none;
-}
-
-  /* Layout */
-.grid-container {
-z-index: 1;
-min-height: 100vh;
-margin: 0 auto;
-padding-left: .2%;
-padding-right: .2%;
-position: relative;
-}
-
-.project-phone{
-position: fixed;
-bottom:3%;
-}
-
-.bottom-footer{
-position: fixed;
-bottom: 0px;
-flex-direction: column;
-}
-
-.footer-left, .footer-right{
-width: 100%;
-}
-
-.jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
-display: inline;
-margin:0px;
-line-height: 16px;
-opacity: 1 !important;
-}
-
-.jenny-phone{
-position: fixed;
-top:1px;
-}
-
-.landscape{
-display: block;
-position:fixed;
-bottom: 20px;
-font-size: 14px;
-}
-
-/* Text */
-p{
-font-size: 14px;
-}
-footer{
-font-size: 5px;
-letter-spacing: 2%;
-}
-.jenny-kim{
-font-size: 16px;
-text-shadow: rgb(0, 0, 0) 0px .1px 1px;
 }
 }
 /* =======================
@@ -768,74 +698,6 @@ display: block;
 /* hommali */
 .hommali-image{
 width:clamp(450px, 20vw,500px);
-}
-}
-
-/* Keep phone landscape rules last so tablet-width landscape screens still obey them. */
-@media (orientation: landscape) and (max-height: 410px){
-*{
-color: #921435e9;
-}
-
-.jenny-jenny,
-h1,
-.project,
-.project-phone {
-display: none;
-}
-
-.grid-container {
-z-index: 1;
-min-height: 100vh;
-margin: 0 auto;
-padding-left: .2%;
-padding-right: .2%;
-position: relative;
-display: block;
-height: auto;
-}
-
-.bottom-footer{
-position: fixed;
-bottom: 0px;
-flex-direction: column;
-}
-
-.footer-left, .footer-right{
-width: 100%;
-}
-
-.jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
-display: inline;
-margin:0px;
-line-height: 16px;
-opacity: 1 !important;
-}
-
-.jenny-phone{
-position: fixed;
-top:1px;
-}
-
-.landscape{
-display: block;
-position:fixed;
-bottom: 20px;
-font-size: 14px;
-}
-
-p{
-font-size: 14px;
-}
-
-footer{
-font-size: 5px;
-letter-spacing: 2%;
-}
-
-.jenny-kim{
-font-size: 16px;
-text-shadow: rgb(0, 0, 0) 0px .1px 1px;
 }
 }
 
@@ -1121,5 +983,115 @@ display: block;
 
 .hommali-image{
 width:500px;
+}
+}
+
+
+
+
+
+@media (max-height: 430px) and (orientation: landscape){
+*{
+color: #0500a2c1;
+}
+
+.jenny-jenny,
+h1,
+.project,
+.project-phone, .email-phone {
+display: none;
+}
+
+.jen,
+.landscape {
+display: block;
+}
+
+.grid-container {
+z-index: 1;
+display: block;
+grid-template-columns: none;
+grid-template-rows: none;
+height: auto;
+min-height: 100vh;
+margin: 0 auto;
+padding-left: .2%;
+padding-right: .2%;
+position: relative;
+}
+
+.flex-container {
+display: block;
+}
+
+.flex-item {
+margin-top: 0;
+}
+
+.middle-gap {
+margin-left: 0;
+}
+
+.bottom-footer{
+position:fixed;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+width: 100%;
+gap: 0px;
+line-height: normal;
+}
+
+.footer-left, .footer-right{
+width: 100%;
+}
+
+.jenny-phone p, .hidden-text, .jenny-phone .hidden-text p {
+display: inline;
+margin:0px;
+line-height: 16px;
+opacity: 1 !important;
+}
+
+.jen{
+margin-top: 8px;
+}
+
+.jenny-phone{
+position: fixed;
+top:3px;
+}
+
+.hidden-text {
+max-height: none;
+overflow: visible;
+}
+
+.landscape{
+position:fixed;
+bottom: 35px;
+font-size: 14px;
+color: #ff00a2e9;
+}
+
+p{
+font-size: 14px;
+word-spacing: normal;
+line-height: 14px;
+margin-bottom: 0;
+}
+
+footer{
+font-size: 8px;
+letter-spacing: 2%;
+}
+
+.social{
+text-align: left;
+}
+
+.jenny-kim{
+font-size: 16px;
+text-shadow: rgb(0, 0, 0) 0px .1px 1px;
 }
 }
