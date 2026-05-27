@@ -20,9 +20,16 @@ Fonts
   font-style: normal;
 }
 
+html {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+}
+
 body {
 background-color: #e0e0d5;
 --project-panel-height: 67vh;
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
 }
 
 /* =======================
@@ -988,7 +995,7 @@ width:500px;
 
 
 
-@media (max-height: 430px) and (orientation: landscape){
+@media (max-height: 450px){
 *{
 color: #0500a2c1;
 }
@@ -1068,20 +1075,20 @@ overflow: visible;
 .landscape{
 position:fixed;
 bottom: 35px;
-font-size: 16px;
+font-size: 16px !important;
 color: #ff00a2e9;
 }
 
 p{
-font-size: 14px;
-word-spacing: normal;
-line-height: 14px;
-margin-bottom: 0;
+font-size: 14px !important;
+word-spacing: normal !important;
+line-height: 14px !important;
+margin-bottom: 0 !important;
 }
 
 footer{
-font-size: 8px;
-letter-spacing: 2%;
+font-size: 8px !important;
+letter-spacing: 2% !important;
 }
 
 .social{
@@ -1089,7 +1096,7 @@ text-align: left;
 }
 
 .jenny-kim{
-font-size: 16px;
+font-size: 16px !important;
 text-shadow: rgb(0, 0, 0) 0px .1px 1px;
 }
 }
