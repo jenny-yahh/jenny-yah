@@ -22,6 +22,7 @@ Fonts
 
 body {
 background-color: #e0e0d5;
+--project-panel-height: 67vh;
 }
 
 /* =======================
@@ -376,11 +377,10 @@ Phone Screen
 ======================= */
 /*Phone Screen*/ @media (min-width: 240px) and (max-width: 360px){
 *{
-color:rgb(255, 73, 185);
 overflow-y: hidden;
 }
 
-.jenny-jenny{
+.jenny-jenny, .landscape{
 display: none;
 }
 
@@ -415,7 +415,10 @@ margin:0px;
 line-height: 1;
 opacity: 1 !important;
 }
-
+.jenny-phone{
+position: fixed;
+top: 1px;
+}
 .jen{
 margin-top: 8px;
 }
@@ -448,7 +451,7 @@ Project
 ======================= */
 .project {
 width: 100%;
-height: clamp(55%, 103vw, 60%);
+height: var(--project-panel-height);
 transform: translateY(-100%);
 transition: transform 0.8s ease;
 will-change: transform, opacity;
@@ -484,11 +487,10 @@ Phone Screen vertical
 ======================= */
 /*Phone Screen*/ @media (min-width: 360px) and (max-width: 500px){
 *{
-color:rgb(4, 82, 18);
 overflow-y: hidden;
 }
 
-.jenny-jenny{
+.jenny-jenny, .landscape{
 display: none;
 }
 
@@ -562,7 +564,7 @@ Project
 ======================= */
 .project {
 width: 100%;
-height: clamp(65%, 82vw, 67%);
+height: var(--project-panel-height);
 transform: translateY(-100%);
 transition: transform 0.8s ease;
 will-change: transform, opacity;
@@ -598,11 +600,10 @@ Phone Screen landscape
 ======================= */
 @media (orientation: landscape) and (max-height: 410px) {
 *{
-color:rgb(186, 10, 134);
 overflow-y: hidden;
 }
 
-.jenny-jenny{
+.jenny-jenny, h1, project, .project-phone{
 display: none;
 }
 
@@ -638,66 +639,35 @@ line-height: 16px;
 opacity: 1 !important;
 }
 
-/* Text */
-h1{
-font-size: 24px;
-line-height: 42px;
+.jenny-phone{
+position: fixed;
+top:1px;
 }
+
+.landscape{
+position:fixed;
+bottom: 20px;
+font-size: 14px;
+}
+
+/* Text */
 p{
 font-size: 14px;
 }
 footer{
-font-size: 8px;
+font-size: 5px;
 letter-spacing: 2%;
 }
 .jenny-kim{
 font-size: 16px;
 text-shadow: rgb(0, 0, 0) 0px .1px 1px;
 }
-.project-text{
-font-size: 14px;
 }
-/* =======================
-Project
-======================= */
-.project {
-width: 50%;
-height: 100%;
-transform: translateX(-100%);
-transition: transform 0.5s ease;
-will-change: transform, opacity;
-}
-
-.project.open{
-transform: translateX(0);
-}
-.work::after{
-height: 1px;
-}
-
-.vetica-image {
-width:clamp(235px,85vw, 365px);
-height: auto;
-display: block;
-}
-
-/* hommali */
-.hommali-image{
-width:100px;
-}
-
-#time, .controls button{
-font-size: 9px;
-padding: 4px 8px;
-}
-}
-
 
 /* =======================
 Tablet Screen
 ======================= */
 /*Tablet Screen*/ @media (min-width: 501px) and (max-width: 984px){
-
 *{
 overflow-y: hidden;
 }
@@ -738,6 +708,12 @@ line-height: 140%;
 opacity: 1 !important;
 }
 
+.jenny-phone{
+position: fixed;
+top:1px;
+}
+
+
 .jen{
 margin-top: 12px;
 }
@@ -762,6 +738,7 @@ font-size: 10px;
 word-spacing: 2px;
 }
 .jenny-kim{
+text-shadow: rgb(0, 0, 0) 0px .1px 1px;
 font-size: 17px;
 }
 .project-text{
@@ -773,7 +750,7 @@ Project
 ======================= */
 .project {
 width: 100%;
-height:clamp(67%, 9vw, 70%);
+height: var(--project-panel-height);
 transform: translateY(-100%);
 transition: transform 0.5s ease;
 will-change: transform, opacity;
