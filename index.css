@@ -846,13 +846,13 @@ Smaller Laptop Screen
 /* =======================
 W3b Style
 ======================= */
+.jen, .landscape{
+display: none;
+}
+
 html,
 body {
   overflow-x: hidden;
-}
-
-.jen .landscape{
-display: none;
 }
 
 /* CSS Grid 2 Columns */
