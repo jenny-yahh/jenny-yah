@@ -419,10 +419,6 @@ background-color: #d8d7b4eb;
 Phone Screen 
 ======================= */
 /*Phone Screen*/ @media (min-width: 240px) and (max-width: 360px){
-*{
-padding-right: 5px;
-}
-
 .jenny-jenny, .landscape{
 display: none;
 }
@@ -529,10 +525,6 @@ padding: 2px 6px;
 Phone Screen vertical
 ======================= */
 /*Phone Screen*/ @media (min-width: 360px) and (max-width: 500px){
-*{
-padding-right: 5px;
-}
-
   .jenny-jenny, .landscape{
 display: none;
 }
