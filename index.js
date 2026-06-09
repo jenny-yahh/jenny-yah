@@ -15,7 +15,6 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     clearInterval(typeMoreAs);
     loader.classList.add("fade-out");
-    document.body.style.overflow = "auto";
   }, 1500);
 });
 
@@ -27,7 +26,7 @@ W3b Title
 document.addEventListener("DOMContentLoaded", function() {
   
     const baseTitle = "jenny kim";
-    const awayTitle = "( ˶°ㅁ°) YAH!!";
+    const awayTitle = "YAAAAAH";
     document.title = baseTitle;
     document.addEventListener("visibilitychange", () => 
       document.title = document.hidden ? awayTitle : baseTitle
@@ -149,6 +148,30 @@ function formatProjectTime(seconds) {
     return `${minutes}:${remainingSeconds}`;
 }
 
+function resetVideoToCover(videoElement, playButton, seekInput, timeDisplay, formatTime) {
+    videoElement.pause();
+    videoElement.currentTime = 0;
+    videoElement.load();
+
+    const coverImage = videoElement.parentElement.querySelector(".video-cover");
+    if (coverImage) {
+        coverImage.classList.remove("hidden");
+    }
+
+    if (playButton) {
+        playButton.textContent = "Play";
+    }
+
+    if (seekInput) {
+        seekInput.value = 0;
+    }
+
+    if (timeDisplay) {
+        const total = isNaN(videoElement.duration) ? 0 : videoElement.duration;
+        timeDisplay.textContent = `${formatTime(0)} / ${formatTime(total)}`;
+    }
+}
+
 function resetProjectContent(project) {
     project.scrollTop = 0;
 
@@ -159,22 +182,7 @@ function resetProjectContent(project) {
 
     if (!projectVideo) return;
 
-    projectVideo.pause();
-    projectVideo.currentTime = 0;
-    projectVideo.load();
-
-    if (projectPlay) {
-        projectPlay.textContent = "Play";
-    }
-
-    if (projectSeek) {
-        projectSeek.value = 0;
-    }
-
-    if (projectTime) {
-        const total = isNaN(projectVideo.duration) ? 0 : projectVideo.duration;
-        projectTime.textContent = `${formatProjectTime(0)} / ${formatProjectTime(total)}`;
-    }
+    resetVideoToCover(projectVideo, projectPlay, projectSeek, projectTime, formatProjectTime);
 }
 
 function closeProject(project) {
@@ -421,6 +429,7 @@ const seek = document.getElementById("seek");
 const time = document.getElementById("time");
 const player = document.getElementById("player");
 const fullscreen = document.getElementById("fullscreen");
+const videoCover = document.getElementById("video-cover");
 
   const fmt = (s) => {
     s = Math.max(0, s || 0);
@@ -445,7 +454,13 @@ const fullscreen = document.getElementById("fullscreen");
     }
   });
 
-  video.addEventListener("play", () => (play.textContent = "Pause"));
+  video.addEventListener("play", () => {
+    play.textContent = "Pause";
+
+    if (videoCover) {
+      videoCover.classList.add("hidden");
+    }
+  });
   video.addEventListener("pause", () => (play.textContent = "Play"));
 
   mute.addEventListener("click", () => {
@@ -486,15 +501,7 @@ document.body.addEventListener("click", function (event) {
     const seek = project.querySelector("#seek");
     const time = project.querySelector("#time");
     if (!project.contains(event.target) && video) {
-      // ✅ FULL RESET
-      video.currentTime = 0;
-      video.load();
-      play.textContent = "Play";
-      if (seek) seek.value = 0;
-      if (time) {
-        const total = isNaN(video.duration) ? 0 : video.duration;
-        time.textContent = `${fmt(0)} / ${fmt(total)}`;
-      }
+      resetVideoToCover(video, play, seek, time, fmt);
     }
   });
 });

@@ -27,6 +27,7 @@ padding-bottom: env(safe-area-inset-bottom);
 padding-top: env(safe-area-inset-top);
 padding-left: env(safe-area-inset-left);
 padding-right: env(safe-area-inset-right); 
+overflow: hidden;
 }
 
 body {
@@ -34,6 +35,7 @@ background-color: #e0e0d5;
 --project-panel-height: 67vh;
 -webkit-text-size-adjust: 100%;
 text-size-adjust: 100%;
+overflow: hidden;
 }
 
 /* =======================
@@ -43,7 +45,6 @@ Cursor
 @media (hover: hover) and (pointer: fine) {
 *{
 cursor: none;
-background-color: #e0e0d5 !important;
 }
 }
 
@@ -55,7 +56,7 @@ border: 1px solid rgb(5, 0, 162);
 background-color: transparent;
 border-radius: 50%;
 pointer-events: none;
-z-index: 9995;
+z-index: 9999;
 left: 0;
 top: 0;
 display: none;
@@ -302,11 +303,35 @@ background-color: transparent;
 .player {
 width: 96%;
 max-width: 100%;
+position: relative;
 }
 
 .player video {
 width: 100%;
+aspect-ratio: 16 / 9;
 display: block;  
+object-fit: cover;
+}
+
+.video-cover {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+aspect-ratio: 16 / 9;
+object-fit: cover;
+display: block;
+z-index: 1;
+pointer-events: none;
+}
+
+.video-cover.hidden {
+display: none;
+}
+
+.controls {
+position: relative;
+z-index: 2;
 }
 
 #time{
@@ -394,6 +419,9 @@ background-color: #d8d7b4eb;
 Phone Screen 
 ======================= */
 /*Phone Screen*/ @media (min-width: 240px) and (max-width: 360px){
+*{
+padding-right: 5px;
+}
 
 .jenny-jenny, .landscape{
 display: none;
@@ -501,7 +529,11 @@ padding: 2px 6px;
 Phone Screen vertical
 ======================= */
 /*Phone Screen*/ @media (min-width: 360px) and (max-width: 500px){
-.jenny-jenny, .landscape{
+*{
+padding-right: 5px;
+}
+
+  .jenny-jenny, .landscape{
 display: none;
 }
 
@@ -609,7 +641,11 @@ padding: 4px 8px;
 Tablet Screen
 ======================= */
 /*Tablet Screen*/ @media (min-width: 501px) and (max-width: 984px){
-.jenny-jenny, .landscape{
+*{
+padding-right: 5px;
+}
+
+  .jenny-jenny, .landscape{
 display: none;
 }
 
@@ -700,7 +736,7 @@ height: 2px;
 }
 
 .vetica-image {
-width:clamp(270px,75vw, 600px);
+width:clamp(270px,75vw, 550px);
 height: auto;
 display: block;
 }
@@ -860,7 +896,7 @@ line-height: 140%;
 
 /* vetica */
 .vetica-image {
-width:clamp(490px,45vw,620px);
+width:clamp(450px,45vw,550px);
 height: auto;
 display: block;
 }
@@ -1003,6 +1039,7 @@ width:500px;
 @media (max-height: 450px){
 *{
 color: #0500a2c1;
+padding-right: 5px;
 }
 
 .jenny-jenny,
