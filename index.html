@@ -36,7 +36,7 @@ Thank you for taking the time to explore this part of my portfolio!-->
 </head>
 
 
-<body style="overflow: hidden;">
+<body>
   <div id="preloader">
     <div class="loader-text">YAH!</div>
   </div>
@@ -135,7 +135,8 @@ Thank you for taking the time to explore this part of my portfolio!-->
         </div>
     </div>
     <div class="player project-ai" id="player">
-        <video id="video" src="projects/AI.mp4" poster="projects/AI-poster.jpg" playsinline> <source src="projects/AI.mp4" type="video/mp4"></video>
+        <img src="projects/AI-poster.jpg" alt="AI video cover image" class="video-cover" id="video-cover">
+        <video id="video" src="projects/AI.mp4" poster="projects/AI-poster.jpg" preload="none" playsinline> <source src="projects/AI.mp4" type="video/mp4"></video>
         <div class="controls">
             <button id="play">Play</button>
             <input id="seek" type="range" min="0" max="100" value="0" step="0.1"/>
@@ -195,4 +196,3 @@ Thank you for taking the time to explore this part of my portfolio!-->
 </div>
 </body>
 </html>
-
